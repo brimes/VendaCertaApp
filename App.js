@@ -31,7 +31,7 @@ export default class App extends React.Component {
   render() {
     return (
       <ThemeProvider uiTheme={uiTheme}>
-        <Router navigationBarStyle={styles.transparentNavBar}>
+        <Router navigationBarStyle={styles.transparentNavBar} backTitle="voltar">
           <Scene key="user" hideNavBar={false} >
               <Scene key="home" component={HomeScene}/>
               <Scene key="mySales" component={MySalesScene}/>
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
   transparentNavBar: {
     backgroundColor: 'transparent',
     height: 100,
+    borderBottomWidth: 0,
     borderColor: '#FFFFFF',
   },
 

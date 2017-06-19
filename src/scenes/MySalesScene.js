@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Image, Text, View, ScrollView } from 'react-native';
-import { setTheme, MKColor } from 'react-native-material-kit';
-import { Button, COLOR, ListItem, Subheader } from 'react-native-material-ui';
+import { ListItem, Subheader } from 'react-native-material-ui';
 import { TextInputMask } from 'react-native-masked-text';
 import DatePicker from 'react-native-datepicker';
 
@@ -23,29 +22,14 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
   },
-  information: {
-    fontSize: 16,
-    fontStyle: 'italic',
-    textAlign: 'center',
-    margin: 5,
-  },
-  textfield: {
-    width: "100%",
+  item: {
+    marginTop: 23,
     marginBottom: 10,
+    borderColor: '#000',
+    borderWidth: 2,
   },
-  inlineDate: {
-    flex: 0,
-    flexDirection: 'row',
-    marginBottom: 20,
-    width: '100%',
-  },
-  inlineDateTextField: {
-    width: '90%',
-  },
-  button: {
-    alignSelf: 'flex-end',
-    width: "100%",
-		marginBottom: 6
+  headerItem: {
+    fontSize: 18
   }
 });
 
@@ -56,9 +40,9 @@ class SaleItem extends Component {
 
   render () {
     return (
-      <View>
-        <Text>{this.props.authorizationDate} - Venda 123122333 </Text>
-        <Text>Aguardando</Text>
+      <View style={styles.item}>
+        <Text style={styles.headerItem}>{this.props.authorizationDate} - Nº {this.props.authorizationCode} </Text>
+        <Text>{this.props.status}</Text>
       </View>
     )
   }
@@ -68,14 +52,32 @@ class MySalesScene extends Component {
 	constructor(props) {
     super(props);
     this.state = {
-      cpf: '',
-      cnpj: '',
-      authorizationCode: '',
-      authorizationDate: '',
-      sendButtonText: 'Enviar',
-      mySalesButtonText: 'Minhas vendas',
-      isButtonDisabled: false,
+      mySales: []
     };
+  }
+
+  componentDidMount () {
+    let model = new SaleModel()
+    model.load().then((sales) => {
+      let salesView = []
+      for (var i = 0; i < sales.length; i++) {
+        var sale = sales[i]
+        salesView.push(
+          <ListItem
+              key={i}
+              divider
+              dense
+              centerElement={{
+                  primaryText: sale.authorizationDate + ' - Nº ' + sale.authorizationCode,
+                  secondaryText: 'Aguardando',
+              }}
+              style={{
+                  secondaryText: { color: "#F00" },
+              }}/>
+        )
+      }
+      this.setState({mySales: salesView})
+    })
   }
 
   render () {
@@ -84,66 +86,7 @@ class MySalesScene extends Component {
         	<Image source={require('../../assets/image/logo.png')} />
           <ScrollView style={styles.listContainer}>
             <Subheader text="Minhas vendas" />
-            <ListItem
-                divider
-                dense
-                centerElement={
-                  <SaleItem
-                    authorizationDate='01/01/2017'
-                    authorizationCode='807342'/>
-                }
-                onPress={() => {}}
-            />
-            <ListItem
-                divider
-                dense
-                centerElement={
-                  <SaleItem
-                    authorizationDate='01/01/2017'
-                    authorizationCode='807342'/>
-                }
-                onPress={() => {}}
-            />
-            <ListItem
-                divider
-                dense
-                centerElement={
-                  <SaleItem
-                    authorizationDate='01/01/2017'
-                    authorizationCode='807342'/>
-                }
-                onPress={() => {}}
-            />
-            <ListItem
-                divider
-                dense
-                centerElement={
-                  <SaleItem
-                    authorizationDate='01/01/2017'
-                    authorizationCode='807342'/>
-                }
-                onPress={() => {}}
-            />
-            <ListItem
-                divider
-                dense
-                centerElement={
-                  <SaleItem
-                    authorizationDate='01/01/2017'
-                    authorizationCode='807342'/>
-                }
-                onPress={() => {}}
-            />
-            <ListItem
-                divider
-                dense
-                centerElement={
-                  <SaleItem
-                    authorizationDate='01/01/2017'
-                    authorizationCode='807342'/>
-                }
-                onPress={() => {}}
-            />
+            {this.state.mySales}
           </ScrollView>
 
         </View>

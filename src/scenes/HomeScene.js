@@ -8,6 +8,7 @@ import { Actions } from 'react-native-router-flux';
 
 // Import models
 const SaleModel = require('../models/SaleModel')
+const UserModel = require('../models/UserModel')
 
 // Styles
 const styles = StyleSheet.create({
@@ -80,6 +81,11 @@ class HomeScene extends Component {
       isButtonDisabled: false,
       maxDate: maxDate
     };
+    let user = new UserModel()
+    user.load().then((user) => {
+      this.setState(user)
+    });
+
   }
 
   sendSale () {
@@ -92,9 +98,15 @@ class HomeScene extends Component {
     this.setState({sendButtonText: "Aguarde...", isButtonDisabled: true})
 
     sale.sendSale().then((saleStatus) => {
+      Alert.alert('Venda Certa', saleStatus.message);
       if (saleStatus.status == 'success') {
-        Alert.alert('Venda Certa', saleStatus.message);
+        this.setState({
+          authorizationCode: '',
+          authorizationDate: ''
+        })
+        Actions.mySales();
       }
+
       this.setState({sendButtonText: "Enviar", isButtonDisabled: false})
     });
   }
@@ -113,19 +125,25 @@ class HomeScene extends Component {
             <TextInputMask
               style={styles.textfield}
             	type={'cpf'}
+              value={this.state.cpf}
             	customTextInput={Textfield}
+              onChangeText={(cpf) => this.setState({cpf: cpf})}
               placeholder="CPF" />
 
             <TextInputMask
+              value={this.state.cnpj}
               style={styles.textfield}
             	type={'cnpj'}
             	customTextInput={Textfield}
+              onChangeText={(cnpj) => this.setState({cnpj: cnpj})}
             	placeholder="CNPJ" />
 
             <TextInputMask
+              value={this.state.authorizationCode}
               style={styles.textfield}
             	type={'only-numbers'}
             	customTextInput={Textfield}
+              onChangeText={(authorizationCode) => this.setState({authorizationCode: authorizationCode})}
             	placeholder="Nº de autorização" />
 
             <View style={styles.inlineDate}>
