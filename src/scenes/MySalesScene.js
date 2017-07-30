@@ -33,30 +33,16 @@ const styles = StyleSheet.create({
   }
 });
 
-class SaleItem extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render () {
-    return (
-      <View style={styles.item}>
-        <Text style={styles.headerItem}>{this.props.authorizationDate} - Nº {this.props.authorizationCode} </Text>
-        <Text>{this.props.status}</Text>
-      </View>
-    )
-  }
-}
-
 class MySalesScene extends Component {
 	constructor(props) {
     super(props);
     this.state = {
-      mySales: []
+      mySales: [],
+      text: "asd"
     };
   }
 
-  componentDidMount () {
+  updateSalesView (sales) {
     let model = new SaleModel()
     model.load().then((sales) => {
       let salesView = []
@@ -69,7 +55,7 @@ class MySalesScene extends Component {
               dense
               centerElement={{
                   primaryText: sale.authorizationDate + ' - Nº ' + sale.authorizationCode,
-                  secondaryText: 'Aguardando',
+                  secondaryText: sale.status,
               }}
               style={{
                   secondaryText: { color: "#F00" },
@@ -77,6 +63,19 @@ class MySalesScene extends Component {
         )
       }
       this.setState({mySales: salesView})
+    })
+  }
+
+  async updateSalesDatabase () {
+    let model = new SaleModel();
+    await model.updateSales();
+    return true
+  }
+
+  componentDidMount () {
+    this.updateSalesView()
+    this.updateSalesDatabase().then(() => {
+      this.updateSalesView()
     })
   }
 

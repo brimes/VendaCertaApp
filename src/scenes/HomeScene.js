@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, Image, Text, View, Alert } from 'react-native';
+import { StyleSheet, Image, Text, View, Alert, Linking } from 'react-native';
 import { setTheme, MKTextField, MKColor } from 'react-native-material-kit';
 import { Button, COLOR } from 'react-native-material-ui';
 import { TextInputMask } from 'react-native-masked-text';
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     paddingTop: 18,
     paddingLeft: 24,
     paddingRight: 24,
+    height: '100%'
   },
   information: {
     fontSize: 16,
@@ -44,6 +45,10 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     width: "100%",
 		marginBottom: 6
+  },
+  link: {
+    marginTop: 24,
+    color: '#00F',
   }
 });
 
@@ -115,12 +120,16 @@ class HomeScene extends Component {
     Actions.mySales();
   }
 
+  goToPortal () {
+    Linking.openURL("http://www.google.com.br").catch(err => console.error('An error occurred', err));
+  }
+
   render () {
 	    return (
 	        <View style={styles.container}>
 	        	<Image source={require('../../assets/image/logo.png')} />
 	        	<Text style={styles.information}>
-							Insira os dados das transações que realizou pela Funcional para computar seus pontos!
+							Insira os dados das transações que realizou pela Funcional para ganhar números da sorte!
 						</Text>
             <TextInputMask
               style={styles.textfield}
@@ -155,6 +164,7 @@ class HomeScene extends Component {
   	               format: "DD/MM/YYYY"
   	            }}
               	customTextInput={TextfieldDate}
+                onChangeText={(authorizationDate) => this.setState({authorizationDate: authorizationDate})}
               	placeholder="Data de autorização" />
 
               <DatePicker
@@ -196,6 +206,11 @@ class HomeScene extends Component {
                 onPress={() => this.mySales()}
 						  />
 					  </View>
+            <Text
+              style={styles.link}
+              onPress={() => this.goToPortal()}>
+							Acessar portal do programa
+						</Text>
 	        </View>
 	  	)
 	}
