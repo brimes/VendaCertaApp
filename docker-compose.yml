@@ -1,0 +1,27 @@
+version: '2'
+services:
+  emulator:
+    environment:
+        - DISPLAY
+    privileged: true
+    network_mode: "host"
+    image: "pinfake/android-emulator-x11:${EMULATOR_DISTRO}"
+    volumes:
+        - "/usr/lib:/usr/lib"
+        - "/tmp/.X11-unix:/tmp/.X11-unix"
+        - "emudata:/opt/android-sdk-linux/.android"
+  development:
+    privileged: true
+    network_mode: "host"
+    image: "pinfake/android-react-native"
+    volumes:
+        - "/dev/bus/usb:/dev/bus/usb"
+        - "devdata:/root"
+        - "${HOME}:/userdata"
+  dev:
+    privileged: true
+    network_mode: "host"
+    image: "pinfake/android-react-native"
+volumes:
+    emudata:
+    devdata:

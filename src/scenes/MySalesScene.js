@@ -44,10 +44,19 @@ class MySalesScene extends Component {
 
   updateSalesView (sales) {
     let model = new SaleModel()
+    let statusColors = {
+      "Em análise": "#f4ee42",
+      "Válida": "#43A047",
+      "Inválida": "#F44336",
+    }
     model.load().then((sales) => {
       let salesView = []
       for (var i = 0; i < sales.length; i++) {
-        var sale = sales[i]
+        let sale = sales[i]
+        let statusColor = "#000";
+        if (typeof statusColors[sale.status] != undefined) {
+          statusColor = statusColors[sale.status]
+        }
         salesView.push(
           <ListItem
               key={i}
@@ -58,7 +67,7 @@ class MySalesScene extends Component {
                   secondaryText: sale.status,
               }}
               style={{
-                  secondaryText: { color: "#F00" },
+                  secondaryText: { color: statusColor },
               }}/>
         )
       }
