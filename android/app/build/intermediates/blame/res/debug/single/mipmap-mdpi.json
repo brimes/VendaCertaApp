@@ -4,6 +4,10 @@
         "source": "/userdata/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
     },
     {
+        "merged": "/home/bruno/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
+        "source": "/home/bruno/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
         "merged": "/userdata/fidelize/mobile/CrowdCheck/VendaCerta/android/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
         "source": "/userdata/fidelize/mobile/CrowdCheck/VendaCerta/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
     }

@@ -7,9 +7,7 @@ class Request {
 		this.params = {}
 		this.method = 'GET'
 		this.headers = {
-			'JsonStub-User-Key': 'e524f2e9-da93-477f-8e45-325be25079d1',
-			'JsonStub-Project-Key': 'ca524d3b-d5e3-49b6-8164-917cece85265',
-			'Content-Type': 'application/graphql'
+			'Content-Type': 'application/json'
 		}
 	}
 

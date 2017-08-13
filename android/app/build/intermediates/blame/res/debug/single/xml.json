@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/bruno/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
+        "source": "/home/bruno/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.44.3/res/xml/preferences.xml"
+    },
+    {
         "merged": "/userdata/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
         "source": "/userdata/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.44.3/res/xml/preferences.xml"
     },

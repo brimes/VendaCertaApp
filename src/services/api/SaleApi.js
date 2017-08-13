@@ -1,52 +1,69 @@
 import Request from "../../components/Request"
+import GraphQL from "../../components/GraphQL"
+import Settings from "../../configuration/Settings"
 
 class SaleApi {
 	id = ''
 	serverID = ''
 	cpf = ''
-  cnpj = ''
-  authorizationCode = ''
-  authorizationDate = ''
+    cnpj = ''
+    authorizationCode = ''
+    authorizationDate = ''
+    settings = new Settings();
 
 	async sendSale() {
-		let request = new Request;
-		request.setUrl('https://venda-certa.herokuapp.com/api/query');
+        let request = new Request;
+        let bodyString = null
+        let graphQL = new GraphQL();
+        graphQL.setType("mutation");
+        graphQL.setName("newSale");
+        graphQL.addField('venda', 'CPFBalconista: "' + this.cpf + '",'
+            + 'CNPJLoja: "' + this.cnpj + '",'
+            + 'NumeroAutorizacao: ' + this.authorizationCode + ','
+            + 'DataAutorizacao: "' + this.authorizationDate + '"'
+        );
+		request.setUrl(this.settings.getFullUrl());
 		request.setMethod("POST");
-		let bodyString = "mutation newSale {\n"
-		+ "  newSale("
-		+ 'cpf: "' + this.cpf + '",'
-		+ 'cnpj: "' + this.cnpj + '",'
-		+ 'code: "' + this.authorizationCode + '",'
-		+ 'date: "' + this.authorizationDate + '"'
-		+ ") {\n"
-		+ "    id\n"
-		+ "  }\n"
-		+ "}"
+		bodyString = JSON.stringify(graphQL.getJsonQuery())
 		request.setBody(bodyString);
 		response = await request.response();
 		responseJson = await response.json();
-		return responseJson.data.newSale.id;
+        if (responseJson.errors != undefined) {
+            console.log(responseJson.errors)
+        }
+        console.log(responseJson)
+		return (responseJson.data != undefined) ? responseJson.data.venda : null;
 	}
 
 	async getSale() {
-		let request = new Request;
-		request.setUrl('https://venda-certa.herokuapp.com/api/query');
+        let bodyString = "";
+        let request = new Request;
+        let graphQL = new GraphQL();
+        graphQL.setType("query");
+        graphQL.setName("getSale");
+        graphQL.addField('venda', 'id: ' + this.id + '');
+        graphQL.addField('venda.status');
+        graphQL.addField('venda.NumeroAutorizacao');
+        graphQL.addField('venda.DataAutorizacao');
+        graphQL.addField('venda.CPFBalconista');
+        graphQL.addField('venda.CNPJLoja');
+        console.log(graphQL.getQuery())
+
+		request.setUrl(this.settings.getFullUrl());
 		request.setMethod("POST");
-		let bodyString = "query getSale {\n"
-		+ '  sales(id: "' + this.id + '") {\n'
-		+ "    id\n"
-		+ "    status\n"
-		+ "    code\n"
-		+ "    date\n"
-		+ "    cpf\n"
-		+ "    cnpj\n"
-		+ "  }\n"
-		+ "}"
+        bodyString = JSON.stringify(graphQL.getJsonQuery())
 		request.setBody(bodyString);
 		response = await request.response();
+        console.log(response);
 		responseJson = await response.json();
-		if (responseJson.data.sales) {
-			return responseJson.data.sales[0]
+		if (responseJson.data.venda) {
+			return {
+                "status": responseJson.data.venda.status,
+                "cpf": responseJson.data.venda.CPFBalconista,
+                "cnpj": responseJson.data.venda.CNPJLoja,
+                "authorizationCode": responseJson.data.venda.NumeroAutorizacao,
+                "authorizationDate": responseJson.data.venda.DataAutorizacao,
+            }
 		}
 
 		return null;

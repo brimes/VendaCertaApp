@@ -38,7 +38,7 @@ class MySalesScene extends Component {
     super(props);
     this.state = {
       mySales: [],
-      text: "asd"
+      text: ""
     };
   }
 
@@ -92,10 +92,10 @@ class MySalesScene extends Component {
 	    return (
         <View style={styles.container}>
         	<Image source={require('../../assets/image/logo.png')} />
-          <ScrollView style={styles.listContainer}>
-            <Subheader text="Minhas vendas" />
-            {this.state.mySales}
-          </ScrollView>
+            <ScrollView style={styles.listContainer}>
+                <Subheader text="Minhas vendas" />
+                {this.state.mySales}
+            </ScrollView>
 
         </View>
 	  	)

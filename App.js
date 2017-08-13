@@ -7,6 +7,8 @@ import { COLOR, ThemeProvider } from 'react-native-material-ui';
 import HomeScene from './src/scenes/HomeScene'
 import MySalesScene from './src/scenes/MySalesScene'
 
+global.testModeActivated = false
+
 const uiTheme = {
     palette: {
       primaryColor: COLOR.indigo500,
@@ -31,12 +33,12 @@ export default class App extends React.Component {
   render() {
     return (
       <ThemeProvider uiTheme={uiTheme}>
-        <Router navigationBarStyle={styles.transparentNavBar} backTitle="voltar">
-          <Scene key="user" hideNavBar={false} >
-              <Scene key="home" component={HomeScene}/>
-              <Scene key="mySales" component={MySalesScene}/>
-          </Scene>
-        </Router>
+          <Router navigationBarStyle={styles.transparentNavBar} backTitle="voltar">
+              <Scene key="user" hideNavBar={false} >
+                  <Scene key="home" component={HomeScene}/>
+                  <Scene key="mySales" component={MySalesScene}/>
+              </Scene>
+          </Router>
       </ThemeProvider>
     );
   }
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
   },
   transparentNavBar: {
     backgroundColor: 'transparent',
-    height: 100,
+    height: 40,
     borderBottomWidth: 0,
     borderColor: '#FFFFFF',
   },
