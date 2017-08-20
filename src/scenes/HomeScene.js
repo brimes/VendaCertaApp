@@ -158,6 +158,7 @@ class HomeScene extends Component {
                     style={styles.textfield}
                     type={'cpf'}
                     value={this.state.cpf}
+                    textInputStyle={{height: 24}}
                     customTextInput={Textfield}
                     onChangeText={(cpf) => this.setState({cpf: cpf})}
                 placeholder="CPF" />
@@ -165,6 +166,7 @@ class HomeScene extends Component {
                 <TextInputMask
                     value={this.state.cnpj}
                     style={styles.textfield}
+                    textInputStyle={{height: 24}}
                     type={'cnpj'}
                     customTextInput={Textfield}
                     onChangeText={(cnpj) => this.setState({cnpj: cnpj})}
@@ -173,6 +175,7 @@ class HomeScene extends Component {
                 <TextInputMask
                     value={this.state.authorizationCode}
                     style={styles.textfield}
+                    textInputStyle={{height: 24}}
                     type={'only-numbers'}
                     customTextInput={Textfield}
                     onChangeText={(authorizationCode) => this.setState({authorizationCode: authorizationCode})}
@@ -182,6 +185,7 @@ class HomeScene extends Component {
                     <TextInputMask
                         value={this.state.authorizationDate}
                         style={styles.inlineDateTextField}
+                        textInputStyle={{height: 24}}
                         type={'datetime'}
                         options={{
                             format: "DD/MM/YYYY"
