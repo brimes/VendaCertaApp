@@ -12,6 +12,7 @@ class SaleApi {
     settings = new Settings();
 
 	async sendSale() {
+        console.log('send')
         let request = new Request;
         let bodyString = null
         let graphQL = new GraphQL();
@@ -47,15 +48,18 @@ class SaleApi {
         graphQL.addField('venda.DataAutorizacao');
         graphQL.addField('venda.CPFBalconista');
         graphQL.addField('venda.CNPJLoja');
-        console.log(graphQL.getQuery())
 
 		request.setUrl(this.settings.getFullUrl());
 		request.setMethod("POST");
         bodyString = JSON.stringify(graphQL.getJsonQuery())
 		request.setBody(bodyString);
 		response = await request.response();
-        console.log(response);
-		responseJson = await response.json();
+        try {
+            responseJson = await response.json();
+        } catch(error) {
+            console.log(error);
+            return null;
+        }
 		if (responseJson.data.venda) {
 			return {
                 "status": responseJson.data.venda.status,
@@ -65,7 +69,6 @@ class SaleApi {
                 "authorizationDate": responseJson.data.venda.DataAutorizacao,
             }
 		}
-
 		return null;
 	}
 }

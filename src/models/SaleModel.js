@@ -172,8 +172,9 @@ class SaleModel {
 
         return {
             status: 'success',
-            message: 'Os dados da sua venda foram enviados e serão analisados. '
-            + 'Em até 24h te confirmaremos se estará tudo certo!'
+            message: 'Os dados da sua venda foram enviados e serão analisados!'
+            + ' Fique de olho no seu extrato do portal do programa para acompanhar a análise.'
+
         };
     }
 

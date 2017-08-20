@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
     paddingTop: 18,
     paddingLeft: 24,
     paddingRight: 24,
-    height: '100%'
+    height: '100%',
+    backgroundColor: "#EEE"
   },
   information: {
     fontSize: 16,
@@ -140,7 +141,7 @@ class HomeScene extends Component {
   }
 
   goToPortal () {
-    Linking.openURL("http://www.google.com.br").catch(err => console.error('An error occurred', err));
+    Linking.openURL("http://www.funcionalcorp.com.br/vendacerta").catch(err => console.error('An error occurred', err));
   }
 
   render () {
@@ -150,7 +151,8 @@ class HomeScene extends Component {
                     <Image source={require('../../assets/image/logo.png')}/>
                 </TouchableOpacity>
 	        	<Text style={styles.information}>
-                    Insira os dados das transações que realizou pela Funcional para ganhar números da sorte!
+                    Você realiza suas vendas Funcional pelo sistema próprio de sua rede?
+                    Utilize os campos abaixo para inserir os dados dessas vendas que realizou para garantir seus números da sorte no programa Venda Certa!
                 </Text>
                 <TextInputMask
                     style={styles.textfield}

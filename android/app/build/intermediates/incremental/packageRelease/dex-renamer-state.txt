@@ -1,4 +1,4 @@
-#Mon Jul 10 02:30:03 UTC 2017
-base.0=/userdata/fidelize/mobile/CrowdCheck/VendaCerta/android/app/build/intermediates/transforms/dex/release/folders/1000/1f/main
+#Sun Aug 13 15:50:14 BRT 2017
+base.0=/home/bruno/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/transforms/dex/release/folders/1000/1f/main
 renamed.0=classes.dex
-file.0=/userdata/fidelize/mobile/CrowdCheck/VendaCerta/android/app/build/intermediates/transforms/dex/release/folders/1000/1f/main/classes.dex
+file.0=/home/bruno/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/transforms/dex/release/folders/1000/1f/main/classes.dex

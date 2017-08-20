@@ -60,7 +60,7 @@ class GraphQL {
             }
             subItemContent += "\n";
         }
-        subItemContent += "}"
+        subItemContent += identation + "}"
         return subItemContent
     }
 

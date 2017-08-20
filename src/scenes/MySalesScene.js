@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, Image, Text, View, ScrollView } from 'react-native';
-import { ListItem, Subheader } from 'react-native-material-ui';
+import { ListItem, Subheader, Card } from 'react-native-material-ui';
 import { TextInputMask } from 'react-native-masked-text';
 import DatePicker from 'react-native-datepicker';
 
@@ -9,28 +9,32 @@ const SaleModel = require('../models/SaleModel')
 
 // Styles
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    paddingTop: 18,
-    paddingLeft: 24,
-    paddingRight: 24,
-  },
-  listContainer: {
-    flex: 1,
-    width: '100%',
-  },
-  item: {
-    marginTop: 23,
-    marginBottom: 10,
-    borderColor: '#000',
-    borderWidth: 2,
-  },
-  headerItem: {
-    fontSize: 18
-  }
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        paddingTop: 18,
+        paddingLeft: 24,
+        paddingRight: 24,
+        backgroundColor: "#EEE"
+    },
+    listContainer: {
+        flex: 1,
+        width: '100%',
+    },
+    item: {
+        marginTop: 23,
+        marginBottom: 10,
+        borderColor: '#000',
+        borderWidth: 2,
+    },
+    headerItem: {
+        fontSize: 18
+    },
+    cardStyle: {
+        padding: 15
+    }
 });
 
 class MySalesScene extends Component {
@@ -45,30 +49,35 @@ class MySalesScene extends Component {
   updateSalesView (sales) {
     let model = new SaleModel()
     let statusColors = {
-      "Em análise": "#f4ee42",
-      "Válida": "#43A047",
-      "Inválida": "#F44336",
+      "Em análise": { bg: "#f4ee42", font: "#555" },
+      "Válida": { bg: "#43A047", font: "#FFFFFF" },
+      "Inválida": { bg: "#F44336", font: "#FFFFFF" }
     }
     model.load().then((sales) => {
       let salesView = []
-      for (var i = 0; i < sales.length; i++) {
+      for (var i = (sales.length - 1); i >= 0; i--) {
         let sale = sales[i]
-        let statusColor = "#000";
-        if (typeof statusColors[sale.status] != undefined) {
-          statusColor = statusColors[sale.status]
+        let bgStatusColor = "#FFFFFF";
+        let fontStatusColor = "#000";
+        if (statusColors[sale.status] != undefined) {
+          bgStatusColor = statusColors[sale.status].bg;
+          fontStatusColor = statusColors[sale.status].font;
         }
         salesView.push(
-          <ListItem
-              key={i}
-              divider
-              dense
-              centerElement={{
-                  primaryText: sale.authorizationDate + ' - Nº ' + sale.authorizationCode,
-                  secondaryText: sale.status,
-              }}
-              style={{
-                  secondaryText: { color: statusColor },
-              }}/>
+            <Card key={i} >
+                <View style={styles.cardStyle}>
+                    <Text>Autorização {sale.authorizationCode} em {sale.authorizationDate} </Text>
+                    <Text style={{
+                        color: fontStatusColor,
+                        marginTop: 10,
+                        padding: 3,
+                        textAlign: "center",
+                        borderRadius: 3,
+                        fontWeight: 'bold',
+                        backgroundColor: bgStatusColor,
+                    }}>{("" + sale.status).toUpperCase()}</Text>
+                </View>
+            </Card>
         )
       }
       this.setState({mySales: salesView})
