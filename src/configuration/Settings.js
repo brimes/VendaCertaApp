@@ -15,7 +15,6 @@ class Settings {
         }
 
         let fullUrl = this.urlType + '://' +  this.host + '/' + this.endpoint
-        console.log(fullUrl);
         return fullUrl;
     }
 }

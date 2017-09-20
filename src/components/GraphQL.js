@@ -1,6 +1,6 @@
-class GraphQL {
     queryType = ""
     queryName = ""
+    class GraphQL {
     queryContent = {}
 
     setType(type) {
