@@ -30,8 +30,9 @@ class Storage {
       for (var i = 0; i < dataToPersist.length; i++) {
         let data = dataToPersist[i]
         if (data.id == this.data.id) {
-          changed = true
           dataToPersist[i] = this.data
+          changed = true
+          break;
         }
       }
       if (!changed) {

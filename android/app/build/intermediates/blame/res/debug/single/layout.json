@@ -20,12 +20,12 @@
         "source": "/home/bruno/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/layout/abc_screen_toolbar.xml"
     },
     {
-        "merged": "/userdata/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
-        "source": "/userdata/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/layout/abc_alert_dialog_material.xml"
-    },
-    {
         "merged": "/home/bruno/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
         "source": "/home/bruno/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/userdata/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
+        "source": "/userdata/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/layout/abc_alert_dialog_material.xml"
     },
     {
         "merged": "/home/bruno/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
@@ -108,12 +108,12 @@
         "source": "/userdata/fidelize/mobile/CrowdCheck/VendaCerta/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.44.3/res/layout/redbox_item_title.xml"
     },
     {
-        "merged": "/userdata/fidelize/mobile/CrowdCheck/VendaCerta/android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
-        "source": "/userdata/fidelize/mobile/CrowdCheck/VendaCerta/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/layout/abc_list_menu_item_icon.xml"
-    },
-    {
         "merged": "/home/bruno/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
         "source": "/home/bruno/fidelize/mobile/ReactNativeApps/VendaCerta/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/userdata/fidelize/mobile/CrowdCheck/VendaCerta/android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
+        "source": "/userdata/fidelize/mobile/CrowdCheck/VendaCerta/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/layout/abc_list_menu_item_icon.xml"
     },
     {
         "merged": "/userdata/fidelize/mobile/CrowdCheck/VendaCerta/android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
