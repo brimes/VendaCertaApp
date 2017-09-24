@@ -11,12 +11,12 @@ global.testModeActivated = false
 
 const uiTheme = {
     palette: {
-      primaryColor: COLOR.indigo500,
-      accentColor: COLOR.green500,
+      primaryColor: '#6ccbd7',
+      accentColor: '#71bf44',
     },
     buttonRaised: {
       container: {
-        backgroundColor: COLOR.indigo500,
+        backgroundColor: '#6ccbd7',
       },
       text: {
         color: '#FFFFFF'

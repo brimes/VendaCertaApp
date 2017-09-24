@@ -40,6 +40,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 5
   },
+  information2: {
+    fontSize: 14,
+    fontStyle: "italic",
+    textAlign: "center",
+    margin: 5
+  },
   textfield: {
     width: "100%",
     marginBottom: 10
@@ -180,9 +186,9 @@ class HomeScene extends Component {
 
   dateInformation() {
     alert(
-      "Apenas vendas realizadas até ontem poderão ser computadas. Se tiver " +
-        "alguma dúvida, entre em contato com o SAC Funcional pelo FAQ do portal " +
-        "do programa."
+        "Apenas vendas realizadas nos dias de ontem e hoje poderão ser computadas."
+        + " Se tiver alguma dúvida, entre em contato com o SAC Funcional pelo"
+        + " FAQ do portal do programa."
     );
   }
 
@@ -195,6 +201,8 @@ class HomeScene extends Component {
           </TouchableOpacity>
           <Text style={styles.information}>
             Você realiza suas vendas Funcional pelo sistema próprio de sua rede?
+          </Text>
+          <Text style={styles.information2}>
             Utilize os campos abaixo para inserir os dados dessas vendas que
             realizou para garantir seus números da sorte no programa Venda
             Certa!

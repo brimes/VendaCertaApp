@@ -44,11 +44,14 @@ class Request {
 		if (this.method != 'GET' && this.body === null) {
 			this.body = JSON.stringify(this.params)
 		}
+		console.log(this.url);
+		console.log(this.body);
 		let response = await fetch(this.url, {
 		  method: this.method,
 		  headers: this.headers,
 		  body: this.body
 		});
+		console.log(response);
 		return response;
 	}
 
