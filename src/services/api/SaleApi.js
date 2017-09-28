@@ -42,16 +42,16 @@ class SaleApi {
     response = await request.response();
     responseJson = await response.json();
     if (responseJson.errors != undefined) {
-			return {
-				status: 'ERROR',
-				message: responseJson.errors[0].message,
-			}
+		return {
+			status: 'ERROR',
+			message: responseJson.errors[0].message,
+		}
     }
     return {
-			status: 'SUCCESS',
-			serverID: responseJson.data.venda.id_venda,
-			status: responseJson.data.venda.status,
-		}
+		status: 'SUCCESS',
+		serverID: responseJson.data.venda.id_venda,
+		statusCode: responseJson.data.venda.status,
+	}
   }
 
   async getSale() {

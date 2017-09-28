@@ -78,7 +78,7 @@ class SaleModel {
             return "Inválida";
         }
 
-        if (status == 3) {
+        if (status == 4) {
             return "Em análise";
         }
 
@@ -186,6 +186,7 @@ class SaleModel {
             "ISO"
         );
         let apiResponse = await saleApi.sendSale();
+        console.log(apiResponse)
         if (apiResponse.status == "ERROR") {
             return {
                 status: apiResponse.status,
@@ -194,7 +195,7 @@ class SaleModel {
         }
         if (apiResponse.status == "SUCCESS") {
             this.serverID = apiResponse.serverID;
-            this.status = this.saleStatusName(apiResponse.status);
+            this.status = this.saleStatusName(apiResponse.statusCode);
             return {
                 status: apiResponse.status,
             };
