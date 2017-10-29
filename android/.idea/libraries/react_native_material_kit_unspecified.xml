@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="react-native-material-kit-unspecified">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/VendaCerta/react-native-material-kit/unspecified/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/VendaCerta/react-native-material-kit/unspecified/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
