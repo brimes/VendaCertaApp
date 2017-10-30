@@ -206,7 +206,31 @@ class SaleModel {
         };
     }
 
+    isMokedData() {
+        if (this.cpf !== "789.444.302-10") {
+            return false;
+        }
+
+        if (this.cnpj !== "25.239.238/1200-01") {
+            return false;
+        }
+
+        if (this.authorizationCode !== "9999") {
+            return false;
+        }
+
+        return true;
+    }
+
     async sendSale() {
+        if (this.isMokedData()) {
+            return {
+                status: "success",
+                message:
+                    "Os dados da sua venda foram enviados e serão analisados!" +
+                    " Fique de olho no seu extrato do portal do programa para acompanhar a análise."
+            };
+        }
         if (!this.validate()) {
             return {
                 status: "error",
